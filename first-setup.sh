@@ -19,13 +19,8 @@ sudo apt-get update && sudo apt-get install nodejs -y
 curl -OL https://golang.org/dl/go1.20.linux-amd64.tar.gz
 sha256sum go1.20.linux-amd64.tar.gz
 sudo tar -C /usr/local -xvf go1.20.linux-amd64.tar.gz
-sudo nano ~/.profile
-# insert into .profile
-export PATH=$PATH:/usr/local/go/bin
-# exit
+echo "$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
-# check if go is installed 
-go version
 
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -39,12 +34,8 @@ sudo apt install make
 git clone https://github.com/ethereum/go-ethereum.git
 cd go-ethereum
 make geth
-# last line: Run "./build/bin/geth" to launch geth.
-nano ~/.bashrc
-# paste this in last line
-export PATH=$PATH:/home/aakash/go-ethereum/build/bin
-# exit
-source ~/.bashrc  # or source ~/.zshrc for Zsh
+echo 'export PATH=$PATH:/home/aakash/go-ethereum/build/bin' >> ~/.bashrc
+source ~/.bashrc
 cd ~
 
 # ignite install
